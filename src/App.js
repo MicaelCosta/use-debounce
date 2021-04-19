@@ -1,23 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import SearchInput from "./SearchInput";
+
+const frutas = [
+  "laranja",
+  "manga",
+  "maça",
+  "melancia",
+  "banana",
+  "abacaxi",
+  "abacate",
+];
 
 function App() {
+  const [search, setSearch] = useState("");
+
+  const lowerSearch = search.toLowerCase();
+  const frutasFiltradas = frutas.filter((fruta) =>
+    fruta.toLocaleLowerCase().includes(lowerSearch)
+  );
+
+  console.log("[RENDER] search", search);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <h3 style={{ marginBottom: "10px" }}>useDebounce Search</h3>
+
+      <SearchInput value={search} onChange={setSearch} />
+
+      <ul style={{ marginTop: "10px" }}>
+        {frutasFiltradas.map((fruta) => (
+          <li key={fruta}>{fruta}</li>
+        ))}
+      </ul>
     </div>
   );
 }
