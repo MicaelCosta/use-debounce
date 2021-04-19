@@ -23,11 +23,7 @@ function App() {
 
   return (
     <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
       <h3 style={{ marginBottom: "10px" }}>useDebounce Search</h3>
 
